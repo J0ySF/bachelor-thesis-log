@@ -1,9 +1,17 @@
-<!DOCTYPE html>
+<html>
 <head>
     <title>2024-03-07</title>
 </head>
 <body>
     <h3>Creazione log attivita'</h3>
     <p>Ho considerato la creazione di questo log di attivita' per tracciare il progresso del progetto e le varie scelte effettuate.</p>
+    <h3>Inizio implementazione visualizzatore tab 3D</h3>
+    <p>Per visualizzare l'interazione sul manico della chitarra ho scelto di utilizzare indicatori di posizione che compaiono sul fret per la durata della nota. Per il momento visualizzo solo le note in ordine con durata costante per testare che la parte implementata fino ad ora funzioni correttamente, il modo in cui tratto le note al momento e' simile ad uno stream (misura temporanea).</p>
+    <p>L'implementazione corrente utilizza un pool di indicatori gia' istanziati e disattivati, in ogni momento nel quale deve essere visualizzata una nota, viene estratto un indicatore dalla pool, il quale procede ad attivarsi, attendere la sua durata e disattivarsi.</p>
+    <p>Questo e' il risultato (sia il manico che gli indicatori sono placeholder, e il timing e durata delle note non sono contemplate), il video mostra il riff principale di Enter Sandman dei Metallica:</p>
+    <video controls loop>
+        <source src="enter-sandman-riff.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
