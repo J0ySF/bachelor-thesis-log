@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>2024-03-08</title>
+</head>
+<body>
+<h3>Lettura documentazione Unity e Varjo, pianificazione attivita' in laboratorio</h3>
+<p>Durante la discussione del progetto si era discusso di utilizzare il tracciamento di oggetti, feature di <a
+        href="https://unity.com/unity/features/arfoundation">Unity AR
+    Foundation</a> che permette di tracciare la posizione di un oggetto nell'ambiente reale e accoppiarlo ad una sua
+    controparte in Unity. A quanto pare, per il momento questa feature e' disponibile solo su alcuni dispositivi
+    Apple.</p>
+<p>In mancanza di questa feature sul visore utilizzato (<a href="https://varjo.com/products/varjo-xr-3/">Varjo XR-3</a>),
+    ho scelto di pianificare l'esplorazione delle feature specifiche dell <a
+            href="https://developer.varjo.com/docs/unity-xr-sdk/unity-xr-sdk">SDK Varjo per Unity</a> (possibilmente
+    anche di alcune features disponibili su tutte le implementazioni di Unity).</p>
+<h4>Varjo Markers</h4>
+<p>Ho individuato i <a href="https://developer.varjo.com/docs/get-started/varjo-markers">Varjo Markers</a> come una
+    buona alternativa al tracciamento di oggetti basato su mesh, il loro pregio e' l'indipendenza dal modello specifico
+    di strumento utilizzato dall'utente, mentre un difetto potrebbe essere la necessita' di applicazione allo strumento
+    dei marker su superfici piatte (la documentazione specifica che l'applicazione a superfici curve potrebbe diminuirne
+    l'accuratezza di tracciamento, questo esclude la possibilita' di applicarli al manico dello strumento.
+</p>
+Alcuni dei punti dove penso sia utile e pratica l'applicazione dei marker potrebbero essere i seguenti (in rosso):
+</p>
+<img src="bass-spots.png">
+<p>
+    I punti in verde sarebbero adirittura migliori, dal momento che localizzerebbero in modo ancora migliore i punti di
+    inizio e 12esimo fret (la cui posizione e' importante in quanto rappresenta il punto a meta' tra inizio e fine delle
+    corde, ma il loro tracciamento con marker potrebbe risultare difficile vista la curvatura del manico.
+</p>
+<p>I punti individuati dovrebbero permettere un applicazione in generale alla gran maggior parte dei modelli di
+    strumenti.</p>
+<p>In vista dell'attivita' di lunedi' ho stampato e ritagliato dei marker di dimensione 2,5 cm, la cui visibilita' ottimale dovrebbe
+    spaziare tra i 50 cm e 1m, penso sia una distanza adeguata per l'uso.
+</p>
+<img src="markers-1.jpg" width="400">
+<img src="markers-2.jpg" width="230">
+<h4>Tracciamento di immagini</h4>
+<p>
+    Esiste anche come possibilita' il tracciamento di immagini in Unity AR Foundation, che potrebbero essere
+    utilizzate in concomitanza con i Varjo Markers per tracciare elementi del design dello strumento come i marcatori di
+    posizione sul lato del manico, i tasti perpendicolari alle corde e le corde stesse.
+</p>
+<h4>Considerazioni finali</h4>
+Idealmente i punti di tracciamento dovrebbero permettere di tracciare la posizione del manico indipendentemente dalla
+direzione in cui l'utente guarda (pur sempre guardando il manico), le ipotesi di implementazione riportate sopra
+sembrano promettere bene.
+</body>
+</html>
