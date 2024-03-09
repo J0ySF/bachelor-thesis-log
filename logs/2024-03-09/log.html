@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>2024-03-09</title>
+</head>
+<body>
+<h3>Setup generazione di immagini di tabulature</h3>
+<p>Ho scelto di esplorare la generazione di tabulature "classiche" in modo tale da permettere la possibilita' di
+    permettere al programma di mostrare sia la notazione classica che in realta' aumentata.</p>
+<p>La libreria alphaTab fornisce funzioni di generazione di grafiche per mostrare le tabulature importate, tra i
+    backend disponibili i candidati per l'utilizzo in Unity sono SVG e Skia.</p>
+<h4>SVG</h4>
+<p>Il formato SVG ha il vantaggio di non richiedere ulteriori dipendenze, in quanto gestito direttamente da alphaTab ma
+    e' risultato meno che ideale in quanto Unity non ha un buon supporto per il processing di grafiche vettoriali online
+    (fornisce funzioni di import nell'editor per la rasterizzazione ma durante l'esecuzione serve installare dei plugin
+    sperimentali che non gestiscono ancora il testo).</p>
+<h4>Skia</h4>
+<p>Skia e' una libreria sviluppata da Google che mette a disposizione un gran numero di API per
+    l'elaborazione grafica in tempo reale. Il vantaggio di utilizzare questa libreria e' la maturita'
+    dell'implementazione e gestione del testo.</p>
+<h4>I problemi affrontati per far funzionare la generazione di immagini delle tabulature in Unity</h4>
+<p>Ho incontrato due intoppi prima di riuscire a generare le immagini, in ordine: il primo problema e' stato capire per
+    quale ragione Unity lanciasse un eccezione nel momento in cui alphaTab caricava il backend Skia, mentre il
+    secondo e' stato capire perche', pur avendo risolto il primo problema, le immagini non venivano generate.</p>
+<ol>
+    <li>La (mancanza di) gestione delle dipendenze in Unity:
+        <p>Unity, non permette l'utilizzo di sistemi di gestione
+            delle dipendenze esterne come NuGet, preferendo l'import nel progetto di librerie .DLL in modo esplicito:
+            questo ha l'effetto di rendere la gestione dell'albero delle dipendenze un processo molto tedioso che apre
+            la porta a molti errori.</p>
+        <p>La ragione per la quale alphaTab non ne voleva sapere di caricare il backend Skia e' che alphaTab
+            dipende da Skia, ma Skia a propria volta dipende (con flag che dipendono dalla piattaforma, in questo caso
+            Windows 64 bit) da librerie native, in questo caso un file chiamato libSkiaSharp.dll, che e' DIVERSO da
+            SkiaSharp.dll (il primo e' la libreria condivisa specifica a windows 64 bit, mentre il secondo e' la
+            dipendenza diretta di alphaTab): al caricamento di SkiaSharp.dll, questo dava errore in quanto non riusciva
+            a caricare libSkiaSharp.dll.</p>
+    </li>
+    <li>Il flag EnableLazyLoading di alphaTab:
+        <p>L'API di generazione di immagini e' strutturata in modo tale da favorire la generazione in modo asincrono con
+            callback.</p>
+        <p>Tra le impostazioni di alphaTab esiste il flag EnableLazyLoading (abilitato di default), che a quanto pare se
+            attivato durante l'esecuzione da parte di Unity ha l'effetto di NON generare alcun callback asincrono, e di
+            conseguenza non viene generata alcuna immagine. La documentazione non spiega molto bene quale sia l'effetto
+            specifico di EnableLazyLoading, questo rende ancora piu' difficile capire il perche' non funzioni in
+            Unity.</p>
+        <p>Disabilitare EnableLazyLoading sembra far funzionare la generazione di immagini, ma individuare la fonte di
+            questo problema e' stato particolarmente irritante, specialmente dopo i problemi con le dipendenze :).</p>
+    </li>
+</ol>
+<h4>Risultato (tabulatura generata "online" da file)</h4>
+<img src="notation-in-unity.png" width="720">
+</body>
+</html>
