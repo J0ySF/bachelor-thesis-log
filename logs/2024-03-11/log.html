@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>2024-03-11</title>
+</head>
+<body>
+<h3>Valutazione dei Varjo Markers come soluzione al problema del tracciamento</h3>
+<p>Oggi sono stato in laboratorio e ho lavorato a un programma per testare le capacita' dei Varjo Markers e la loro
+    utilita' nel contesto di questo progetto.</p>
+<p>Il programma riceve gli eventi dal plugin Varjo XR e posiziona dei GameObject nei punti individuati come
+    rappresentanti i marker.</p>
+<video controls>
+    <source src="markers.mp4" type="video/mp4">
+</video>
+<p>Non penso che i marker siano adatti per questo progetto dal momento che:</p>
+<ul>
+    <li>
+        Non possono essere posizionati su superfici curve (come il manico del basso): questo fatto lo avevo già letto
+        sulla documentazione Varjo ma ho verificato oggi che effettivamente anche la presenza della più piccola curva.
+    </li>
+    <li>
+        Non possono essere coperti (neanche parzialmente): questo ellimina la possibilita' di posizionarli sotto le
+        corde lungo il manico.
+    </li>
+</ul>
+<p>Un problema ulteriore e' insorto dal fatto che il Varjo SDK non sembra supportare il tracciamento di immagini (e
+    tantomeno oggetti), di conseguenza non penso che il Varjo XR-3 sia il visore da utilizzare per questo progetto,
+    seppur essendo un prodotto molto costoso avrei pensato che potesse fare anche tracciamento di immagini.</p>
+<h3>Tentativo di implementazione riproduzione dei tab con eventi MIDI</h3>
+<p>Un primo tentativo naive di mappatura degli eventi MIDI a elementi della tabulatura non e' andato a buon fine, dal
+    momento che per qualche ragione gli eventi MIDI sembrano essere emessi ad un ritmo piu' lento di quello della
+    riproduzione audio, risultando nell'introduzione di ritardo.</p>
+</body>
+</html>
