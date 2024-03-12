@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>2024-03-12</title>
+</head>
+<body>
+<h3>Pianificazione attivita' laboratorioo</h3>
+<p>Per il discorso del problema di tracciamento con marker, mi e' stato detto di pormi come obiettivo temporaneo di
+    porre tracker sulla parte frontale non ostruita dalle corde e di tracciare quei punti (come se l'utente fosse di
+    fronte ad uno specchio e potesse vedere entrambi i punti).</p>
+<img src="marker-spots.png">
+<p>I punti da tracciare per ora sono quelli in blu.</p>
+<h3>Prima implementazione di tracciamento manico sulla base di tracking a due/tre marker</h3>
+<p> L'implementazione con due marker permette di specificare offset del punto nei confronti del ponte e capotasto per i
+    rispettivi marker, per orientare il manico sulla lunghezza dello strumento, utilizza i dati di orientamento dei
+    tracker, che a volte non sono affidabili. A questo fine ho scelto di creare una soluzione con tre marker, due sul
+    corpo, in modo tale da ottenere il piano sul quale giaciono i tre marker, dal quale ottenendo la normale si puo'
+    evitare di affidarsi ai dati di orientamento dei marker.
+</p>
+<h3>Generazione procedurale dei punti di interesse sul manico</h3>
+<p>I punti sono generati secondo la seguente formula:</p>
+<img src="fret-distance-formula.png">
+<p>dove d e' distanza del fret dal capotasto, s la scala ponte-capotasto e n l'indice del fret del quale si vuole
+    conoscere la distanza.</p>
+<img src="procedural-frets.png" width="720">
+<p>I parametri utilizzati in questa immagine sono basati sul modello P Fender, lo stesso nell'immagine con le posizioni
+    dei marker.</p>
+<img src="parameters.png">
+</body>
+</html>
