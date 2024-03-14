@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>2024-03-13</title>
+</head>
+<body>
+<h3>Configurazione delle dipendenze a plugin Varjo in modo portabile</h3>
+<p>Ho impostato la dipendenza da url invece che cartella sul disco in modo tale che avendo installato il plugin su piu'
+    computer non ci siano problemi di dipendenze passando da una macchina all'altra.</p>
+<h3>Ristrutturazione struttura progetto e refactoring codice</h3>
+<p>Essendo alcune caratteristiche del progetto consolidate, ho riformattato il codice/struttura del progetto Unity per
+    "ripulire" queste sezioni.</p>
+<h3>Bux "fix" per la riproduzione dell' audio con il sintetizzatore MIDI, considerazioni sulla riproduzione audio</h3>
+<p>Mi sono accorto che la velocita' di riproduzione dell'audio non era corretta, questo era causato da calcoli
+    sbagliati nell'adattamento dello stream audio da AlphaSynth a Unity. La questione non e' 100% risolta dal momento
+    che il modo in cui ho sistemato non e' particolarmente portabile.</p>
+<p>Dal momento che l'implementazione "corretta" di questo aspetto non mi e' chiara (e forse esiste la possibilita' di
+    delegare la riproduzione a Windows invece che Unity) si potrebbe valutare quale sia l'approccio migliore da
+    seguire.</p>
+</body>
+</html>
