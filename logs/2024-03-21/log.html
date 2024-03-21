@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>2024-03-21</title>
+</head>
+<body>
+<h3>Ragionamento sul posizionamento dei marker per l'interfaccia utente e implementazione del tracciamento</h3>
+<p>
+    Il posizionamento dei marker deve essere tale da evitare problemi causati dalle braccia dell'utente che possono
+    coprire marker durante l'interazione. In un qualunque momento inoltre sarebbe bene poter vedere (almeno) tre tracker
+    in disposizione triangolare tra loro (non su una retta), quindi penso che una buona soluzione potrbbe del seguente
+    tipo:
+</p>
+<img src="mirror_markers.png" width="720">
+<p>dove i marker rossi sono principali, mentre i marker blu sono secondari. Il funzionamento potrebbe seguire i seguenti
+    casi:</p>
+<ul>
+    <li>almeno 3 marker principali sono visibili: vengono utilizzati questi tre marker per calcolare la posizione</li>
+    <li>2 marker principali sono visibili:
+        <ul>
+            <li>i marker principali non condividono un lato dello specchio ed e' visibile almeno un marker secondario,
+                oppure i marker condividono un lato dello specchio ed e' visibile almeno un marker secondario su un
+                altro lato: vengono usati i 2 principali piu' un secondatio valido
+            </li>
+        </ul>
+    </li>
+    <li>1 solo marker principale e' visibile:
+        <ul>
+            <li>almeno due marker secondari non sullo stesso lato sono visibili: vengono usati i 2 secondari piu' il
+                piu' il principale
+            </li>
+        </ul>
+    </li>
+</ul>
+<p>Se nessuno dei casi descritti e' applicabile allora si perde il tracciamento, ma con queste regole mi sembra
+    improbabile nei casi d'uso normali.</p>
+<p>Un alternativa potrebbe essere prendere tutti i marker visibili, trovare tutti i triangoli presenti in quel momento e
+    fare la media del tracciamento di ognuno, in questo modo la precisione sarebbe molto alta nel momento in cui si vede
+    tutto e diminuirebbe nel momento in cui il numero di marker cala, fino a risultare minima con solo 3 tracker non
+    tutti sullo stesso lato. (Per il momento questa alternativa, seppur piu' impegnativa computazionalmente, mi sembra
+    molto piu' affidabile.)</p>
+<h3>Realizzazione dei marker da poter attaccare al lato dello specchio con supporti ad angolo</h3>
+<p>Per poter attaccare i marker ai lati dello specchio ho stampato nuovi marker, incollati a cartone per evitare che si
+    deformino e ho creato dei supporti a L per i marker per attaccarli ai lati della cornice dello specchio.</p>
+<img src="material.jpg" width="360">
+<h3>Pianificazione attivita' di laboratorio</h3>
+<p>L'obiettivo di domani e' implementare il tracciamento della cornice, collocare l'interfaccia utente sulla cornice e
+    verificare che l'interazione non vada a rompere il tracciamento.</p>
+</body>
+</html>
