@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>2024-03-24</title>
+</head>
+<body>
+<h3>Cambio di implementazione per il tracciamento della cornice</h3>
+<p>Dal momento che il tracciamento della cornice con N punti per ridondanza si e' rivelato un problema compelsso, ho
+    scelto di introdurre una dipendenza ad una piccola libreria il cui scopo e' quello di trovare la matrice di
+    trasformazione che meglio approssima la trasformazione dai punti attesi a quelli efettivi rivelati sulla
+    cornice.</p>
+<h3>Creazione modello 3D della cornice</h3>
+<p>Ho creato un modello decente per la cornice, la superficie nera e' una maschera per indicare una superficie dove
+    mostrare il mondo reale, come se fosse un portale. Lo specchio ha un bordo con padding di 1cm attorno a quello
+    reale, in modo
+    tale da cercare di mascherare i piccoli discostamenti tra la cornice reale e quella virtuale.</p>
+<img src="frame.png">
+<h3>Inizio prototipazione interfaccia utente</h3>
+<p>L'interazione si suddivide in due stadi, uno nel quale tramite, un menu a scorrimento, l'utente seleziona un tab da
+    suonare, e una facciata successiva, dove dopo avere selezionato il tab, l'utente interagisce con l'interfaccia per
+    suonare.</p>
+<p>Il menu per la visione dei tab potrebbe essere strutturato nel seguente modo:</p>
+<img src="play-ui-1.png" width="720">
+<p>dove tab e' dove viene mostrata la tablatura, info mostra informazioni sullo stato del programma e i controlli
+    potrebbero essere una fila di 5 bottoni: (in ordine)</p>
+<ul>
+    <li>Seek-start: riavvolge fino all' inizio del tab</li>
+    <li>Seek-back: riavvolge al'indietro di una barra il tab</li>
+    <li>Start-pause: mette in pausa/riprende la riproduzione</li>
+    <li>Seek-back: va avanti di una barra il tab</li>
+    <li>Seek-end: va alla fine del tab</li>
+</ul>
+<p>Bisogna anche mettere da qualche parte un bottone per uscire al menu precedente, probabilmente si potrebbe mettere
+    prendendo una parte del riquadro INFO.</p>
+<p>In alternativa i controlli di seek potrebbero essere collocati ai lati del tab, lasciando spazio in controlli per
+    altro:</p>
+<img src="play-ui-2.png" width="720">
+<p>Per facilitare l'utente nelle operazioni comuni, i controlli di start-pause e seek avanti/indietro di 1 bar
+    potrebbero essere attaccati alla mano sinistra dell'utente, come mostrato sulla <a
+            href="https://docs.ultraleap.com/xr-and-tabletop/xr/unity/plugin/features/hand-attachments.html">documentazione
+        UltraLeap</a>, cioe' il software di tracciamento delle mani in uso.</p>
+<h3>Considerazioni sul controllo della riproduzione</h3>
+<p>Dal momento che per la visualizzazione sto gia' utilizzando un simil-MVC, vale la pena espandere questo tipo di
+    modello per unificare l'interazione.</p>
+<h3>Scelta icone e font per l' interfaccia utente</h3>
+<p>Per le icone penso di utilizzare le <a href="https://fonts.google.com/icons">icone Material di Google</a>, mentre per
+    per il font pensavo a <a
+            href="https://fonts.google.com/specimen/Roboto?selected=Material+Symbols+Outlined:close:FILL@0;wght@400;GRAD@0;opsz@24">Roboto</a>
+    (anche questo di Google). </p>
+</body>
+</html>
