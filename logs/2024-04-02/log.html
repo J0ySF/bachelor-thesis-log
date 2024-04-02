@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>2024-04-02</title>
+</head>
+<body>
+<h3>Inizio riformattazione del codice come si deve</h3>
+<p>Ho cominciato la riformattazione del codice (e di conseguenza della struttura della scena in Unity): sono partito
+    implementando classi ausiliarie che contengano i dati dello spartito secondo uno schema utile per quello che sto
+    facendo nel mio progetto (quindi meno confusionario di quello di AlphaTab) e individuando le responsabilita'
+    riguardo a chi conosce lo stato e chi si adegua ai cambiamenti di stato (per evitare mismatch tra lo stato
+    dell'interfaccia e lo stato interno del programma, pur mantenendo un sistema a eventi invece che facendo il polling
+    ogni frame dello stato).
+</p>
+<p>Il modo nel quale ho implementato la classe "Player", che controlla la riproduzione, e' seguendo uno schema
+    simil-macchina-a-stati-finiti, dove le azioni non valide sono gestite attraverso le eccezzioni (per poter anche
+    verificare che edge cases strani non passino inosservati).</p>
+</body>
+</html>
