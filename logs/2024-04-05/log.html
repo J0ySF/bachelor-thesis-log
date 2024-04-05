@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>2024-04-05</title>
+</head>
+<body>
+<h3>Ricerca di soluzioni per il lag durante il caricamento della traccia</h3>
+<p>Dal momento che ieri ho trovato il problema di caricare le texture dello spartito senza bloccare il thread
+    principale, ho cominciato ad elaborare una soluzione che funziona in questo modo:</p>
+<ol>
+    <li>Crea un thread sul quale lanciare la creazione di tutti i dati che possono essere gestiti su un thread diverso
+        da quello principale
+    </li>
+    <li>
+        Carica i dati da file e crea le bitmap "raw" da caricare sulla GPU dal thread principale
+    </li>
+    <li>
+        Carica i dati Midi nel sintetizzatore
+    </li>
+    <li>
+        Termina il thread e ricevi i dati e le bitmap
+    </li>
+    <li>
+        Carica una texture ogni frame per evitare di caricare tutte le texture contemporaneamente e causare lag che
+        potrebbe affaticare l'utente (specialmente con il visore)
+    </li>
+</ol>
+<p>Questo piano sembrerebbe funzionare bene se non per un problema nello step 3: chi ha implementato la libreria
+    evidentemente non ha ottimizzato troppo a fondo il caricamento, e insorge il problema dove questo step utilizza
+    molta memoria in modo non ottimizzato e il garbage collector impazzisce. Questo effetto non e' pronunciato nelle
+    build release, ma mi dispiace non poter correggere questo problema (senza perdere MOLTO tempo che non penso sia
+    opportuno).</p>
+<p>Per individuare questa sezione come la fonte del lag, ho utilizzato il profiler di Unity per analizzare la fonte del
+    problema:</p>
+<img src="profiler.png">
+<p>Provero' a indagare sulla possibilita' di disattivare/attivare manualmente il garbage collector, magari in questo
+    modo riesco ad evitare il problema, anche se non e' molto grave nelle build.</p>
+</body>
+</html>
