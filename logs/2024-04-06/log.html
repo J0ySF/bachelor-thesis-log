@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>2024-04-06</title>
+</head>
+<body>
+<h3>Valutazione delle performance in build ottimizzate</h3>
+<p>Dal momento che sembra non ci siano alternative migliori a quella scelta correntemente per il caricamento dei dati
+    (dal momento che il problema e' nell'implementazione della libreria AlphaTab), ho provato a compilare il programma
+    con il backend IL2CPP, che compila il codice in un eseguibile molto piu' efficiente di quello standard, ma richiede
+    tempi molto lunghi di compilazione.
+    Il risultato e' che per fortuna, sembra che con questo livello di ottimizzazione della build il lag durante il
+    caricamento sia sparito del tutto, quindi considererei il problema come risolto.
+</p>
+<p>Le ottimizzazioni fatte ieri sono comunque servite dal momento che disabilitandole, anche con questo tipo di build il
+    programma lagga per circa mezzo secondo.</p>
+<p>Oltre a questo, e' stato necessario anche creare una pool di immagini all'avvio, per poi ridimensionarle per
+    "attivarle" durante il caricamento in modo tale da evitare la creazione/distruzione durante il runtime.</p>
+<h3>Valutazione possibilita' di utiizzo immagini SVG</h3>
+<p>Ho tentato di integrare il plugin per il rendering SVG di Unity ma dopo averlo integrato mi sono reso conto che non
+    supporta il rendering del testo (MOLTO importante per lo spartito), quindi sono tornato all'utilizzo di immagini
+    rasterizzate. Il motivo per il quale avrei preferito SVG e' che l'utilizzo immagini rasterizzate non e' molto comodo
+    dal punto di vista del dimensionamento nell'interfaccia, ma mi sa che rimane l'unica alternativa.</p>
+</body>
+</html>
