@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>2024-04-08</title>
+</head>
+<body>
+<h3>Esplorazione delle alternative per il controllo con l'audio dello strumento e rilevamendo delle note riprodotte</h3>
+<p>Oggi ho provato a vedere se e quanto e' possibile rilevare le note riprodotte dall'utente suonando uno strumento, e
+    l'esito non e' stato molto promettente.</p>
+<p>Il primo step e' stato di cercare qualche esempio che utilizzasse il microfono in Unity, e per quell'aspetto posso
+    dire che il delay tra l'input e la riproduzione in output non e' male tutto sommato (stiamo parlando di meno di
+    100ms quindi ho in mente un idea per come far funzionare il sistema per non far percepire all'utente il delay).</p>
+<p>L'identificazione del pitch non e' implementata in modo nativo da Unity ma ci sono alcune soluzioni non ufficiali e
+    una semi-ufficiale, che implementa gli algoritmi di riconoscimento in C++ e fornisce binding in C#. Oggi ho testato
+    nel dettaglio questa soluzione ma sembra che questa non sia capace di rilevare bene le frequenze della prima ottava
+    del basso elettrico, quindi ho provato con una chitarra elettrica e con quella funziona molto bene.</p>
+<p>Questo video mostra il funzionamento corretto con la chitarra (la qualita' video e' bassa ma le note sono
+    identificate
+    correttamente):</p>
+<video src="guitar.mp4" controls></video>
+<p>Questo video mostra il funzionamento con il basso, dove le note sono identificate solo dopo una certa frequenza (il
+    clipping audio e' causato dalla registrazione video, non ha a che vedere con unity):</p>
+<video src="bass.mp4" controls></video>
+<p>Questo video mostra il delay tra l'audio diretto dall'interfaccia audio e l'audio in output da unity dopo essere
+    stato letto dall'interfaccia:</p>
+<video src="delay.mp4" controls></video>
+<p>Come si sente, esiste del delay ma non e' troppo forte da rendere il sistema inutilizzabile.</p>
+<p>Nei prossimi giorni provo a vedere se si riesce a rilevare bene le note del basso, altrimenti un alternativa potrebbe
+    essere utilizzare un convertitore MIDI esterno e lavorare con i valori MIDI in Unity.</p>
+</body>
+</html>
