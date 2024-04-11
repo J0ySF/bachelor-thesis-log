@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>2024-04-10</title>
+</head>
+<body>
+<h3>Esplorazione di alternative per la rilevazione del pitch audio in input</h3>
+<p>Ho discusso il problema di ieri col prof e abbiamo individuato 4 soluzioni (in ordine di quanto siano ideali):</p>
+<ol>
+    <li>
+        Rilevare il pitch audio direttamente in Unity: questa opzione non e' da barrare immediatamente ma dal tentativo
+        di ieri non mi e' sembrato molto promettente. Il prof mi ha consigliato di provare a elevare il pitch audio di
+        un ottava tramite processing audio per vedere se la situazione migliora.
+    </li>
+    <li>
+        Rilevare il pitch audio con un intermediario che converta in MIDI: questa opzione non e' male e le opzioni per
+        la conversione sono 2.
+        La prima e' di utilizzare hardware dedicato (che costa su un centinaio di euro) per rilevare il pitch, l'altra
+        e' di utilizzare software e piping tra programmi per reindirizzare l'input MIDI a Unity.
+    </li>
+    <li>
+        Rilevare il volume in input e trattare qualsiasi rumore come una nota corretta: brutto ma meglio di niente in
+        caso tutto fallisca.
+    </li>
+</ol>
+<h3>Sperimentazione con l'approccio MIDI software:</h3>
+<p>Avendo gia' installato Reaper (Digital Audio Workstation) e Surge (sintetizzatore digitale/plugin per DAW) ho
+    provato a installare loopMIDI, un software che implementa pipe virtuali tra processi per passare l'output MIDI di un
+    processo in input ad un altro.</p>
+<p>Il risultato e' discreto e potrebbe funzionare: (i video mostrano Reaper che rileva il pitch in input, lo scrive in
+    ouput sul pipe di loopMIDI e questo viene letto da Surge, che sintetizza il suono in output. Ho sperimentato con il
+    pitch in Reaper e ho trovato che elevarlo di un ottava prima di convertire in MIDI migliora la latenza (non migliora
+    la qualita' della rilevazione, sembra anzi peggiorarla leggermente, con molte note "rumore" quando si preme e
+    rilascia la corda).</p>
+<video src="scale.mp4" controls></video>
+<video src="billie-jean.mp4" controls></video>
+<p>A quanto pare la rilevazione e' leggermente migliore con il tono del basso impostato al minimo, la scelta tra pickup
+    P e J non sembra cambiare molto il risultato.</p>
+<h3>Prossimi tentativi</h3>
+<p>Domani provo a vedere se riesco a far funzionare meglio il rilevamento in Unity, se non riesco a migliorare la
+    situazione neanche un minimo allora opterei per il MIDI.</p>
+</body>
+</html>
