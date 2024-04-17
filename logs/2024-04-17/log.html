@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>2024-04-17</title>
+</head>
+<body>
+<h3>Sperimentazione con l'input MIDI per compensare il lag di input</h3>
+<p>Ho provato a riprendere l'implementazione dell'interazione basata sull'input MIDI, e ho provato a implementare un
+    sistema molto semplice per compensare il lag di input, dove la valutazione dell'input avviene con un ritardo
+    configurabile per permettere all'input inserito nel momento giusto di essere recepito dal sistema senza che il
+    sistema percepisca questo come in ritardo per colpa del delay.</p>
+<video src="input-reading.mp4" controls></video>
+<p>Nel video si vedono due casi dove la pausa della riproduzione era corretta, dal momento che mi ero fermato (ai
+    secondi 10 e 18) e un caso di errore di interpretazione dell'input al secondo 4. La mia congettura sulla natura di
+    questo errore e' la presenza di valori spuri in alcune istanze di pressione e rilascio delle corde, dove per brevi
+    frangenti di tempo all'inizio e fine della pressione della corda l'interprete rileva valori completamente sballati
+    (intervallati al valore giusto). Il prossimo obiettivo per questo lato del progetto e' di mitigare l'effetto di
+    questo difetto di tracciamento sul funzionamento del programma.</p>
+</body>
+</html>
