@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>2024-04-18</title>
+</head>
+<body>
+<h3>Inizio refactoring della sezione di tracciamento AR</h3>
+<p>Self explainatory, nel rivedere il codice ho capito come migliorare la stabilita' del tracciamento: dal momento che
+    (per ora) sto utilizzando un algoritmo di best-fit per allineare i punti indicati dai marker con quelli
+    corrispondenti sul gameobject in Unity, nel momento nel quale capita che solo marker coplanari siano visibili,
+    l'algoritmo finisce per dare di matto e il tracciamento diventa imprevedibile, quindi per risolvere questo e'
+    bastato RIMUOVERE marker in modo tale che ce ne siano al piu' due sullo stesso lato, in modo tale da evitare che se
+    solo 3 marker sono visibili e tutti e 3 sono sullo stesso lato allora il sistema si illuda di poter tracciare in
+    modo valido.</p>
+<p>Lo step successivo sarebbe di permettere qualisasi numero di marker su ogni lato pur impedendo casi degeneri, ma
+    secondo me anche li poi si finisce per avere problemi quando solo tanti punti su un lato sono visibili e anche solo
+    1 su un altro, ma questo sara' da vedere.</p>
+</body>
+</html>
