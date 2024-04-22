@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>2024-04-21</title>
+</head>
+<body>
+<img src="today.png">
+<h3>Testing delle feature correnti</h3>
+<p>Di fronte alla discussione di domani sullo stato del progetto ho calibrato tutto perche' funzioni bene domani e ho
+    testato alcune feature in modo prolungato per verificare che funzionino adeguatamente.</p>
+<h3>Introduzione di utility per il tracciamento visivo</h3>
+<p>Per facilitare l'editing dei punti dei marker ho introdotto delle funzioni di debug che mostrano all'interno
+    dell'editor di Unity le posizioni dei marker e a che oggetto traccaibile sono attaccati.</p>
+<h3>Scrittura di script per aiutare la generazione di spartiti</h3>
+<p>Per generare spartiti ripetitivi come scale ripetute piu' volte ma scalate di un semitono, ho sviluppato uno script
+    abbastanza velocemente per rendere la generazione semiautomatica, nel tempo che a mano avevo impiegato a scrivere
+    una scala di spartito (senza traslazioni) oggi sono riusctito a generare due interi spartiti con traslazioni a
+    partire dal loro modello espresso come codice.</p>
+<h3>Introduzione di un avvertimento di mancato tracciamento visivo dello strumento</h3>
+<p>Ora quando lo strumento non e' tracciato viene mostrato un banner che indica il problema e una possibile soluzione
+    (almeno che non ci siano problemi con i marker applicati in modo errato).</p>
+<h3>Considerazioni da discutere domani sul funzionamento</h3>
+<p>Alcune supposizioni sull'utilizzo che avevo fino ad ora sono cambiate:</p>
+<ul>
+    <li>L'opzione di attivare o meno il "countdown pre play" non e' utile, dal momento che (ora che funziona
+        correttamente) questa funzione sembra sempre utile e la sua rimozione semplificherebbe alcune cose, quindi lo
+        lascerei sempre attivo.
+    </li>
+    <li>Si potrebbero aggiungere altri elementi all'interno della realta' specchiata (per ora ci sono solo gli
+        indicatori
+        sullo strumento
+    </li>
+    <li>Gli indicatori sullo strumento funzionano bene tranne che per la corda "a vuoto": per questa l'approccio non e'
+        indicato correttamente quindi andrebbero considerati diversi approcci da utilizzare per indicare le informazioni
+        visive.
+    </li>
+    <li>Si potrebbe introdurre un elemento di "gamification" sotto forma di un contatore che indica la "streak" di note
+        corrette suonate di fila, questo elemento potrebbe essere messo nel mondo specchiato.
+    </li>
+    <li>Si potrebbe introdurre un indicazione visiva di pulso del metronomo (oltre che quella uditiva).</li>
+</ul>
+</body>
+</html>
