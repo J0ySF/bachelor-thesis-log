@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>2024-04-24</title>
+</head>
+<body>
+<h3>Caccia al softlock nelle sole build standalone</h3>
+<p>Ieri ho incontrato un bug in laboratorio dove le build standalone si bloccavano durante il caricamento delle tracce,
+    oggi investigando ho trovato che il motivo era che (per qualche motivo) Unity tutto d'un tratto ha scelto di NON
+    COPIARE i .DLL nativi dai quali dipende AlphaTab nella directory della build. Ho risolto mettendo come target dei
+    .DLL nativi (che funzionano solo su windows x64) TUTTE le piattaforme, al che ora Unity li copia...</p>
+<img src="errors.png" width="720">
+<h3>Inizio strutturazione definita del codice</h3>
+<p>Ora che i requisiti sono fissi (spero almeno ...) ho cominciato la (ri)strutturazione definitiva con documentazione
+    (su domanda del prof :( altrimenti non la avrei fatta dato che mancano poche ore e questo lavoro sfora gia per conto
+    proprio).</p>
+</body>
+</html>
