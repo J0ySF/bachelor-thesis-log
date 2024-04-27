@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>2024-04-27</title>
+</head>
+<body>
+<h3>Rimozione bug e workaround per bug non risolbivili</h3>
+<p>La feature del count-in di AlphaTab ha un bug strano, dove fermando e riprendendo il playback durante il countdown si
+    generano lag e glitch audio fastidiosissimi e sgradevoli, oggi ho provato a rimuovere questi problemi in piu' modi
+    ma non ho trovato modo: l'unica soluzione mi e' parsa impedire all'utente di metter in pausa durante il
+    countdown. Questa soluzione e' poco elegante ma funziona.</p>
+<p>Per essere sicuro di avere fatto tutto giusto ho provato sia la mia implementazione del backend audio che quella di
+    riferimento di AlphaTab, basata su NAudio: ho scaricato NAudio, sono riuscito a farlo funzionare in Unity e il
+    risultato e' stato che il comportamento e' lo stetto... A questo punto sono abbastanza sicuro che questo sia un
+    problema di AlphaTab, e il codice sorgente e' abbastanza complicato al punto nel quale scavare per toglierlo mi
+    sembra fuori contesto.</p>
+</body>
+</html>
