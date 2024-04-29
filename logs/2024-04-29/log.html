@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>2024-04-29</title>
+</head>
+<body>
+<h3>Testing dell'implementazione</h3>
+<p>Il testing delle features esistenti è andato molto meglio del previsto. Il tracciemento è valido, l'interfaccia
+    funziona in modo soddisfacente (a livello puramente meccanico).</p>
+<h3>Lavoro sulla valutazione dell'input MIDI</h3>
+<p>La valutazione dell'input (con obiettivo di fermare la riproduzione se l'utente manca una nota) era stata tentata in
+    modo poco soddisfacene in precedenza, oggi l'ho ripresa in mano e sono giunto a risultati accettabili.</p>
+<p>Per favorire il riconoscimento ho aggiunto un buffer temporale per tutte le note MIDI riconosciute (quindi anche in
+    caso di errore di riconoscimento c'è la possibilità che vengano tracciate lo stesso), un delay per ritardare il
+    momento di valutazione della nota secondo la quantità di ritardo di input, e un range temporale di validità attorno
+    alla nota per definire l'intervallo di tempo durante il quale la nota può essere riconosciuta.</p>
+<h3>Aggiunta features QoL in base a feedback di un collega</h3>
+<p>Ho fatto provare il progetto a un collega e mi ha fatto notare tutti i problemi che ha riscontrato, come:</p>
+<ul>
+    <li>La mancanza di chiarezza nell'utilizzo del count-in: il suo problema era che per come sono fatti gli indicatori
+        sullo strumento, non è intuitivo capire quando finisce il countdown, quindi ho introdotto un "rewind" durante il
+        countdown in modo tale che venga mostrata la riproduzione a partire da una battuta prima e e che il progresso
+        riprenda regolare in concomitanza con la fine del countdown. Le note "false" mostrate durante il countdown sono
+        di un colore diverso per indicare che non sono valutate e appartengono al periodo del countdown.
+    </li>
+    <li>Il riconoscimento dell'input audio funziona male nelle mani di un utente non esperto (lui suona la chitarra
+        elettrica non il basso), ma per questo oltre alle misure correnti non si può fare molto.
+    </li>
+</ul>
+<h3>Video del progresso corrente</h3>
+<p>Il video mostra il funzionamento con le informazioni di debug sul tracciamento dei marker, mi sono dimenticato di
+    disabilitarle e non ho avuto tempo di filmare nuovamente.</p>
+<video></video> <!-- agguingere video -->
+</body>
+</html>
